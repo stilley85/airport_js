@@ -6,14 +6,27 @@ Airport.prototype.land = function(plane) {
   this.hangar.push(plane);
 };
 
-Airport.prototype.takeoff = function(plane) {
-  var index = this.hangar.indexOf(plane);
-  if (index === -1) {
-    console.log("NO!");
+Airport.prototype.isStormy = function () {
+  var chance = Math.floor((Math.random() * 10) + 1);
+  if (chance < 3) {
+    return true;
   } else {
-    this.hangar.splice(index, 1);
+    return false;
   }
 };
+
+Airport.prototype.takeoff = function(plane) {
+  if (this.isStormy()===true) {
+    console.log("NO!");
+  } else {
+      var index = this.hangar.indexOf(plane);
+      if (index === -1) {
+        console.log("NO!");
+      } else {
+        this.hangar.splice(index, 1);
+      }
+    }
+  };
 
 var airport = new Airport();
 
