@@ -1,12 +1,8 @@
 var Airport = function(){
+  this.hangar = [];
 };
 
-// Airport.prototype.hangar = function() {
-//   this.hangar = [];
-// };
-
 Airport.prototype.land = function(plane) {
-  this.hangar = [];
   this.hangar.push(plane);
 };
 
