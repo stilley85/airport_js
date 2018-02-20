@@ -8,7 +8,11 @@ Airport.prototype.land = function(plane) {
 
 Airport.prototype.takeoff = function(plane) {
   var index = this.hangar.indexOf(plane);
-  this.hangar.splice(index, 1);
+  if (index === -1) {
+    console.log("NO!");
+  } else {
+    this.hangar.splice(index, 1);
+  }
 };
 
 var airport = new Airport();
