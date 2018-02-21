@@ -1,10 +1,7 @@
+debugger;
+
 var Airport = function(){
   this.hangar = [];
-};
-
-
-Airport.prototype.land = function(plane) {
-  this.hangar.push(plane);
 };
 
 Airport.prototype.isStormy = function () {
@@ -13,6 +10,15 @@ Airport.prototype.isStormy = function () {
     return true;
   } else {
     return false;
+  }
+};
+
+Airport.prototype.land = function(plane) {
+  if (this.isStormy()===true) {
+    console.log("Cannot land in stormy weather!")
+  } else {
+    this.hangar.push(plane);
+    plane.land();
   }
 };
 
@@ -25,10 +31,7 @@ Airport.prototype.takeoff = function(plane) {
         console.log("That plane is not at this airport!");
       } else {
         this.hangar.splice(index, 1);
+        plane.takeoff();
       }
     }
   };
-
-var airport = new Airport();
-
-airport.land('a plane');
