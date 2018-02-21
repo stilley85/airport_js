@@ -2,6 +2,7 @@ var Airport = function(){
   this.hangar = [];
 };
 
+
 Airport.prototype.land = function(plane) {
   this.hangar.push(plane);
 };
@@ -17,11 +18,11 @@ Airport.prototype.isStormy = function () {
 
 Airport.prototype.takeoff = function(plane) {
   if (this.isStormy()===true) {
-    console.log("NO!");
+    console.log("Cannot take off in stormy weather!");
   } else {
       var index = this.hangar.indexOf(plane);
       if (index === -1) {
-        console.log("NO!");
+        console.log("That plane is not at this airport!");
       } else {
         this.hangar.splice(index, 1);
       }
