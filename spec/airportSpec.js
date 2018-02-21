@@ -40,4 +40,12 @@ describe ('Airport', function() {
     expect(airport.hangar).toContain(plane);
   });
 
+  it("planes cannot land when the airport is full", function() {
+    spyOn(Math, 'random').and.returnValue(10)
+    airport.land(plane)
+    airport.land(plane)
+    airport.land(plane)
+    expect(function(){airport.land(plane);}).toThrow(new Error("The airport is full!"));
+  });
+
 });
